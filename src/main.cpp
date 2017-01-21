@@ -1,4 +1,5 @@
 /*
+
 MIT License
 
 Copyright (c) 2017 Noah Andreas
@@ -20,6 +21,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 */
 
 
@@ -29,7 +31,7 @@ SOFTWARE.
 int
 main(int argc, char *argv[])
 {
-    kernladung::Neon neon("/etc/xdg/menus/californium-applications.menu");
+    mlde::Neon neon("/etc/xdg/menus/californium-applications.menu");
 
     return true;
 }

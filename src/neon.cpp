@@ -1,4 +1,5 @@
 /*
+
 MIT License
 
 Copyright (c) 2017 Noah Andreas
@@ -20,6 +21,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 */
 
 
@@ -28,7 +30,7 @@ SOFTWARE.
 #include <QDebug>
 
 
-namespace kernladung {
+namespace mlde {
 
 
 Neon::Neon(QString menuFile)
@@ -58,11 +60,11 @@ Neon::loadMenuFile(XdgTreeNode* node, const QString& menuFile)
     // check parameter
     if (menuFile.isEmpty())
     {
-        qCritical() << "kernladung::neon::XdgXml::loadMenuFile() parameter menuFile is empty";
+        qCritical() << "mlde::neon::XdgXml::loadMenuFile() parameter menuFile is empty";
         return;
     }
 
-    qDebug() << "kernladung::neon::XdgXml::loadMenuFile() " << menuFile;
+    qDebug() << "mlde::neon::XdgXml::loadMenuFile() " << menuFile;
 
 
     // check file
@@ -70,13 +72,13 @@ Neon::loadMenuFile(XdgTreeNode* node, const QString& menuFile)
 
     if ( !file->exists() )
     {
-        qCritical() << "kernladung::neon::XdgXml::loadMenuFile() " << menuFile << " file does not exists";
+        qCritical() << "mlde::neon::XdgXml::loadMenuFile() " << menuFile << " file does not exists";
         return;
     }
 
     if ( !file->open(QIODevice::ReadOnly | QIODevice::Text) )
     {
-        qCritical() << "kernladung::neon::XdgXml::loadMenuFile() " << menuFile << " unable to open file";
+        qCritical() << "mlde::neon::XdgXml::loadMenuFile() " << menuFile << " unable to open file";
         return;
     }
 
@@ -132,7 +134,7 @@ Neon::loadMenuFile(XdgTreeNode* node, const QString& menuFile)
 
             if ( !node->parent )
             {
-                qCritical() << "kernladung::neon::XdgXml::loadMenuFile()  EndElement: error going up to parent; parent is null";
+                qCritical() << "mlde::neon::XdgXml::loadMenuFile()  EndElement: error going up to parent; parent is null";
                 return;
             }
 
@@ -190,7 +192,7 @@ Neon::processTags(XdgTreeNode* node)
 void
 Neon::processMergeFile(XdgTreeNode* node)
 {
-    qDebug() << "kernladung::neon::XdgXml::processMergeFile() " << node->text;
+    qDebug() << "mlde::neon::XdgXml::processMergeFile() " << node->text;
 
 
     // check if file is not already loaded!
@@ -238,7 +240,7 @@ Neon::processMergeFile(XdgTreeNode* node)
 void
 Neon::processMergeDir(XdgTreeNode* node)
 {
-    qDebug() << "kernladung::neon::XdgXml::processMergeDir() " << node->text;
+    qDebug() << "mlde::neon::XdgXml::processMergeDir() " << node->text;
 
     // replace <MergeDir> with <MergeFile>-tags for each *.menu-file in <MergeDir>
 }
@@ -247,7 +249,7 @@ Neon::processMergeDir(XdgTreeNode* node)
 void
 Neon::processDefaultMergeDirs(XdgTreeNode* node)
 {
-    qDebug() << "kernladung::neon::XdgXml::processDefaultMergeDirs()";
+    qDebug() << "mlde::neon::XdgXml::processDefaultMergeDirs()";
 
     // replace <DefaultMergeDirs> with <MergeDir>-tags for each dir from environment-var
 
@@ -263,7 +265,7 @@ Neon::processDefaultMergeDirs(XdgTreeNode* node)
 
         node->insertAfter(n);
 
-        qDebug() << "kernladung::neon::XdgXml::processDefaultMergeDirs() added " << n->text;
+        qDebug() << "mlde::neon::XdgXml::processDefaultMergeDirs() added " << n->text;
     }
 
     node->remove();
@@ -273,7 +275,7 @@ Neon::processDefaultMergeDirs(XdgTreeNode* node)
 void
 Neon::processDefaultAppDirs(XdgTreeNode* node)
 {
-    qDebug() << "kernladung::neon::XdgXml::processDefaultAppDirs()";
+    qDebug() << "mlde::neon::XdgXml::processDefaultAppDirs()";
 
     // replace <DefaultAppDirs> with <AppDir>-tags for each dir from environment-var
 
@@ -289,7 +291,7 @@ Neon::processDefaultAppDirs(XdgTreeNode* node)
 
         node->insertAfter(n);
 
-        qDebug() << "kernladung::neon::XdgXml::processDefaultAppDirs() added " << n->text;
+        qDebug() << "mlde::neon::XdgXml::processDefaultAppDirs() added " << n->text;
     }
 
     node->remove();
@@ -299,7 +301,7 @@ Neon::processDefaultAppDirs(XdgTreeNode* node)
 void
 Neon::processDefaultDirectoryDirs(XdgTreeNode* node)
 {
-    qDebug() << "kernladung::neon::XdgXml::processDefaultDirectoryDirs()";
+    qDebug() << "mlde::neon::XdgXml::processDefaultDirectoryDirs()";
 
     // replace <DefaultDirectoryDirs> with <DirectoryDir>-tags for each dir from environment-var
 
@@ -315,7 +317,7 @@ Neon::processDefaultDirectoryDirs(XdgTreeNode* node)
 
         node->insertAfter(n);
 
-        qDebug() << "kernladung::neon::XdgXml::processDefaultDirectoryDirs() added " << n->text;
+        qDebug() << "mlde::neon::XdgXml::processDefaultDirectoryDirs() added " << n->text;
     }
 
     node->remove();
