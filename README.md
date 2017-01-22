@@ -1,4 +1,3 @@
-# neon
 
 a lib to create xdg based menus.
 
