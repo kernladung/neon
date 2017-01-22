@@ -25,13 +25,13 @@ SOFTWARE.
 */
 
 
-#include "neon.h"
+#include "hafnium.h"
 
 
 int
 main(int argc, char *argv[])
 {
-    mlde::Neon neon("/etc/xdg/menus/californium-applications.menu");
+    mlde::hafnium hafnium("/etc/xdg/menus/californium-applications.menu");
 
     return true;
 }

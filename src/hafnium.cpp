@@ -25,7 +25,7 @@ SOFTWARE.
 */
 
 
-#include "neon.h"
+#include "hafnium.h"
 #include "xdgmenu.h"
 #include <QDebug>
 
@@ -33,7 +33,7 @@ SOFTWARE.
 namespace mlde {
 
 
-Neon::Neon(QString menuFile)
+hafnium::hafnium(QString menuFile)
 {
 
     loadMenuFile(&root, menuFile);
@@ -54,17 +54,17 @@ Neon::Neon(QString menuFile)
 
 
 void
-Neon::loadMenuFile(XdgTreeNode* node, const QString& menuFile)
+hafnium::loadMenuFile(XdgTreeNode* node, const QString& menuFile)
 {
 
     // check parameter
     if (menuFile.isEmpty())
     {
-        qCritical() << "mlde::neon::XdgXml::loadMenuFile() parameter menuFile is empty";
+        qCritical() << "mlde::hafnium::XdgXml::loadMenuFile() parameter menuFile is empty";
         return;
     }
 
-    qDebug() << "mlde::neon::XdgXml::loadMenuFile() " << menuFile;
+    qDebug() << "mlde::hafnium::XdgXml::loadMenuFile() " << menuFile;
 
 
     // check file
@@ -72,13 +72,13 @@ Neon::loadMenuFile(XdgTreeNode* node, const QString& menuFile)
 
     if ( !file->exists() )
     {
-        qCritical() << "mlde::neon::XdgXml::loadMenuFile() " << menuFile << " file does not exists";
+        qCritical() << "mlde::hafnium::XdgXml::loadMenuFile() " << menuFile << " file does not exists";
         return;
     }
 
     if ( !file->open(QIODevice::ReadOnly | QIODevice::Text) )
     {
-        qCritical() << "mlde::neon::XdgXml::loadMenuFile() " << menuFile << " unable to open file";
+        qCritical() << "mlde::hafnium::XdgXml::loadMenuFile() " << menuFile << " unable to open file";
         return;
     }
 
@@ -134,7 +134,7 @@ Neon::loadMenuFile(XdgTreeNode* node, const QString& menuFile)
 
             if ( !node->parent )
             {
-                qCritical() << "mlde::neon::XdgXml::loadMenuFile()  EndElement: error going up to parent; parent is null";
+                qCritical() << "mlde::hafnium::XdgXml::loadMenuFile()  EndElement: error going up to parent; parent is null";
                 return;
             }
 
@@ -148,7 +148,7 @@ Neon::loadMenuFile(XdgTreeNode* node, const QString& menuFile)
 
 
 void
-Neon::processTags(XdgTreeNode* node)
+hafnium::processTags(XdgTreeNode* node)
 {
     // check all children if further processing is necessary
 
@@ -190,9 +190,9 @@ Neon::processTags(XdgTreeNode* node)
 
 
 void
-Neon::processMergeFile(XdgTreeNode* node)
+hafnium::processMergeFile(XdgTreeNode* node)
 {
-    qDebug() << "mlde::neon::XdgXml::processMergeFile() " << node->text;
+    qDebug() << "mlde::hafnium::XdgXml::processMergeFile() " << node->text;
 
 
     // check if file is not already loaded!
@@ -238,18 +238,18 @@ Neon::processMergeFile(XdgTreeNode* node)
 
 
 void
-Neon::processMergeDir(XdgTreeNode* node)
+hafnium::processMergeDir(XdgTreeNode* node)
 {
-    qDebug() << "mlde::neon::XdgXml::processMergeDir() " << node->text;
+    qDebug() << "mlde::hafnium::XdgXml::processMergeDir() " << node->text;
 
     // replace <MergeDir> with <MergeFile>-tags for each *.menu-file in <MergeDir>
 }
 
 
 void
-Neon::processDefaultMergeDirs(XdgTreeNode* node)
+hafnium::processDefaultMergeDirs(XdgTreeNode* node)
 {
-    qDebug() << "mlde::neon::XdgXml::processDefaultMergeDirs()";
+    qDebug() << "mlde::hafnium::XdgXml::processDefaultMergeDirs()";
 
     // replace <DefaultMergeDirs> with <MergeDir>-tags for each dir from environment-var
 
@@ -265,7 +265,7 @@ Neon::processDefaultMergeDirs(XdgTreeNode* node)
 
         node->insertAfter(n);
 
-        qDebug() << "mlde::neon::XdgXml::processDefaultMergeDirs() added " << n->text;
+        qDebug() << "mlde::hafnium::XdgXml::processDefaultMergeDirs() added " << n->text;
     }
 
     node->remove();
@@ -273,9 +273,9 @@ Neon::processDefaultMergeDirs(XdgTreeNode* node)
 
 
 void
-Neon::processDefaultAppDirs(XdgTreeNode* node)
+hafnium::processDefaultAppDirs(XdgTreeNode* node)
 {
-    qDebug() << "mlde::neon::XdgXml::processDefaultAppDirs()";
+    qDebug() << "mlde::hafnium::XdgXml::processDefaultAppDirs()";
 
     // replace <DefaultAppDirs> with <AppDir>-tags for each dir from environment-var
 
@@ -291,7 +291,7 @@ Neon::processDefaultAppDirs(XdgTreeNode* node)
 
         node->insertAfter(n);
 
-        qDebug() << "mlde::neon::XdgXml::processDefaultAppDirs() added " << n->text;
+        qDebug() << "mlde::hafnium::XdgXml::processDefaultAppDirs() added " << n->text;
     }
 
     node->remove();
@@ -299,9 +299,9 @@ Neon::processDefaultAppDirs(XdgTreeNode* node)
 
 
 void
-Neon::processDefaultDirectoryDirs(XdgTreeNode* node)
+hafnium::processDefaultDirectoryDirs(XdgTreeNode* node)
 {
-    qDebug() << "mlde::neon::XdgXml::processDefaultDirectoryDirs()";
+    qDebug() << "mlde::hafnium::XdgXml::processDefaultDirectoryDirs()";
 
     // replace <DefaultDirectoryDirs> with <DirectoryDir>-tags for each dir from environment-var
 
@@ -317,7 +317,7 @@ Neon::processDefaultDirectoryDirs(XdgTreeNode* node)
 
         node->insertAfter(n);
 
-        qDebug() << "mlde::neon::XdgXml::processDefaultDirectoryDirs() added " << n->text;
+        qDebug() << "mlde::hafnium::XdgXml::processDefaultDirectoryDirs() added " << n->text;
     }
 
     node->remove();
@@ -325,55 +325,55 @@ Neon::processDefaultDirectoryDirs(XdgTreeNode* node)
 
 
 void 
-Neon::simplify()
+hafnium::simplify()
 {
 }
 
 
 void 
-Neon::mergeMenus()
+hafnium::mergeMenus()
 {
 }
 
 
 void 
-Neon::moveMenus()
+hafnium::moveMenus()
 {
 }
 
 
 void 
-Neon::deleteDeletedMenus()
+hafnium::deleteDeletedMenus()
 {
 }
 
 
 void 
-Neon::processDirectoryEntries(QStringList())
+hafnium::processDirectoryEntries(QStringList())
 {
 }
 
 
 void 
-Neon::processDesktopEntries()
+hafnium::processDesktopEntries()
 {
 }
 
 
 void 
-Neon::processLayouts()
+hafnium::processLayouts()
 {
 }
 
 
 void 
-Neon::deleteEmpty()
+hafnium::deleteEmpty()
 {
 }
 
 
 void 
-Neon::fixSeparators()
+hafnium::fixSeparators()
 {
 }
 

@@ -32,7 +32,7 @@ SOFTWARE.
 
 
 namespace mlde {
-namespace neon {
+namespace hafnium {
 
 
 class Node

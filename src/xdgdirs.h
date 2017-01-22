@@ -33,7 +33,7 @@ SOFTWARE.
 
 
 namespace mlde {
-namespace neon {
+namespace hafnium {
 
 
 static class XdgDirs

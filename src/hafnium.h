@@ -34,14 +34,14 @@ SOFTWARE.
 namespace mlde {
 
 
-class Neon
+class hafnium
 {
 
 public:
-    explicit Neon(QString fileName);
+    explicit hafnium(QString fileName);
     
 private:
-    neon::XdgTreeNode root;
+    hafnium::XdgTreeNode root;
 
     void loadMenuFile(XdgTreeNode* node, const QString& menuFile);
     void processNodes(XdgTreeNode* node);

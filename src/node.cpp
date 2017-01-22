@@ -30,7 +30,7 @@ SOFTWARE.
 
 
 namespace mlde {
-namespace neon {
+namespace hafnium {
 
 
 Node::Node()
