@@ -1,3 +1,0 @@
-- filewatcher for all read files
-- processMergeFile: check if file is already loaded
-- change type to lib after testing
